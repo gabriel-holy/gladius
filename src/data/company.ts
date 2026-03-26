@@ -1,7 +1,7 @@
 export const company = {
   name: "Gladius",
   tagline: "TODO: Definir tagline",
-  whatsapp: "5500000000000",
+  whatsapp: "5511994095913",
   email: "contato@gladius.com.br",
   foundedYear: 2025,
   address: {

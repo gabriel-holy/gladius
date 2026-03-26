@@ -63,26 +63,31 @@ const words = [
 ---
 
 <section id="precos" class="relative bg-cream">
-
   <!--
-    Phase 1: Title reveal — centered, full screen, word-by-word
+    Single split-view section:
+    - Left: sticky title with word-by-word blur reveal as user scrolls
+    - Right: accordion cards that open/close one at a time
+    - Title stays sticky until last card finishes
   -->
-  <div id="pricing-reveal-runway" class="relative">
-    <div class="sticky top-0 flex h-screen items-center justify-center px-6 md:px-10">
-      <div class="text-center">
+  <div id="pricing-section" class="mx-auto grid max-w-site grid-cols-1 px-6 md:grid-cols-12 md:gap-10 md:px-10">
+
+    <!-- LEFT (5 cols) — Sticky title with reveal effect -->
+    <div class="relative md:col-span-5">
+      <div class="sticky top-0 flex h-screen flex-col justify-center py-20">
         <span
-          class="mb-4 block font-mono text-2xs tracking-caps text-vermillion"
+          class="mb-4 font-mono text-2xs tracking-caps text-vermillion"
           id="pricing-label"
           style="opacity: 0;"
         >
           [INVESTIMENTO]
         </span>
-        <h2 id="pricing-title-center" class="font-display" style="font-size: clamp(2.8rem, 7vw, 6.5rem); line-height: 1.05;">
+
+        <h2 class="font-display text-ink" style="font-size: clamp(2.2rem, 4vw, 4rem); line-height: 1.08;">
           {words.map((word, i) => (
             <span
               class="pricing-word inline"
               data-word-index={i}
-              style="opacity: 0.06; filter: blur(6px);"
+              style="opacity: 0.06; filter: blur(5px);"
             >
               <span class={word.color === "vermillion" ? "text-vermillion" : "text-ink"}>
                 {word.text}
@@ -91,104 +96,81 @@ const words = [
             </span>
           ))}
         </h2>
+
+        <p
+          class="mt-8 max-w-xs font-mono text-sm leading-relaxed text-ink/25"
+          id="pricing-subtitle"
+          style="opacity: 0;"
+        >
+          Parcelamento em até 12×.<br/>Projetos customizados sob consulta.
+        </p>
       </div>
     </div>
-  </div>
 
-  <!--
-    Phase 2: Split view — title sticky left, accordion cards right
-    All on cream background
-  -->
-  <div id="pricing-split" class="relative">
-    <div class="mx-auto grid max-w-site grid-cols-1 px-6 md:grid-cols-12 md:gap-10 md:px-10">
-
-      <!-- LEFT (5 cols) — Sticky title -->
-      <div class="relative md:col-span-5">
-        <div class="sticky top-0 flex h-screen flex-col justify-center py-20">
-          <span class="mb-4 font-mono text-2xs tracking-caps text-vermillion">
-            [INVESTIMENTO]
-          </span>
-          <h2 class="font-display text-ink" style="font-size: clamp(2.2rem, 4vw, 4rem); line-height: 1.08;">
-            TRANSPARENTE.<br/>
-            <span class="text-vermillion">SEM SURPRESAS.</span>
-          </h2>
-          <p class="mt-8 max-w-xs font-mono text-sm leading-relaxed text-ink/25">
-            Parcelamento em até 12×.<br/>Projetos customizados sob consulta.
-          </p>
-        </div>
+    <!-- RIGHT (7 cols) — Accordion cards -->
+    <div class="relative py-20 md:col-span-7 md:py-40" id="pricing-cards-col">
+      <div class="mb-8 font-mono text-sm tracking-wider text-ink/30">
+        Nossos planos ↓
       </div>
 
-      <!-- RIGHT (7 cols) — Accordion cards -->
-      <div class="relative py-20 md:col-span-7 md:py-40" id="pricing-cards-col">
-        <div class="mb-8 font-mono text-sm tracking-wider text-ink/30">
-          Nossos planos ↓
-        </div>
-
-        {plans.map((plan, i) => (
-          <div
-            class="pricing-acc mb-4 overflow-hidden rounded-sm border border-ink/8 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
-            data-plan-index={i}
-            style="background: rgba(7,3,4,0.03);"
-          >
-            <!-- Header -->
-            <div class="flex items-center justify-between px-6 py-5 md:px-8">
-              <div class="flex items-center gap-3">
-                {plan.popular && (
-                  <span class="pricing-acc-badge font-mono text-[9px] tracking-caps text-vermillion">★</span>
-                )}
-                <h3 class="pricing-acc-name font-display text-[24px] tracking-wider text-ink/30 transition-all duration-500">
-                  {plan.name}
-                </h3>
-              </div>
-              <span class="pricing-acc-price font-display text-[24px] tracking-snug text-ink/15 transition-all duration-500">
-                R$ {plan.price}
-              </span>
+      {plans.map((plan, i) => (
+        <div
+          class="pricing-acc mb-4 overflow-hidden rounded-sm border border-ink/8 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
+          data-plan-index={i}
+          style="background: rgba(7,3,4,0.03);"
+        >
+          <!-- Header -->
+          <div class="flex items-center justify-between px-6 py-5 md:px-8">
+            <div class="flex items-center gap-3">
+              {plan.popular && (
+                <span class="pricing-acc-badge font-mono text-[9px] tracking-caps text-vermillion">★</span>
+              )}
+              <h3 class="pricing-acc-name font-display text-[24px] tracking-wider text-ink/30 transition-all duration-500">
+                {plan.name}
+              </h3>
             </div>
+            <span class="pricing-acc-price font-display text-[24px] tracking-snug text-ink/15 transition-all duration-500">
+              R$ {plan.price}
+            </span>
+          </div>
 
-            <!-- Body -->
-            <div
-              class="pricing-acc-body transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
-              style="max-height: 0; opacity: 0; overflow: hidden;"
-            >
-              <div class="border-t border-ink/6 px-6 pb-8 pt-6 md:px-8">
-                <p class="mb-5 font-mono text-xs text-ink/40">
-                  {plan.tagline}
-                </p>
-                <div class="mb-6 flex flex-col gap-3">
-                  {plan.features.map((f) => (
-                    <div class="flex items-start gap-2.5">
-                      <span class="mt-1 font-mono text-2xs text-vermillion">▸</span>
-                      <span class="font-mono text-sm leading-relaxed text-ink/55">{f}</span>
-                    </div>
-                  ))}
-                </div>
-                <a
-                  href="#contato"
-                  class:list={[
-                    "btn-pricing block w-full cursor-pointer py-4 text-center font-display text-base tracking-widest no-underline",
-                    plan.popular
-                      ? "border-none bg-vermillion text-white"
-                      : "border border-ink/15 bg-transparent text-ink",
-                  ]}
-                >
-                  COMEÇAR AGORA
-                </a>
+          <!-- Body -->
+          <div
+            class="pricing-acc-body transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
+            style="max-height: 0; opacity: 0; overflow: hidden;"
+          >
+            <div class="border-t border-ink/6 px-6 pb-8 pt-6 md:px-8">
+              <p class="mb-5 font-mono text-xs text-ink/40">
+                {plan.tagline}
+              </p>
+              <div class="mb-6 flex flex-col gap-3">
+                {plan.features.map((f) => (
+                  <div class="flex items-start gap-2.5">
+                    <span class="mt-1 font-mono text-2xs text-vermillion">▸</span>
+                    <span class="font-mono text-sm leading-relaxed text-ink/55">{f}</span>
+                  </div>
+                ))}
               </div>
+              <a
+                href="#contato"
+                class:list={[
+                  "btn-pricing block w-full cursor-pointer py-4 text-center font-display text-base tracking-widest no-underline",
+                  plan.popular
+                    ? "border-none bg-vermillion text-white"
+                    : "border border-ink/15 bg-transparent text-ink",
+                ]}
+              >
+                COMEÇAR AGORA
+              </a>
             </div>
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
     </div>
   </div>
 </section>
 
 <style>
-  /* Collapsed default — light muted on cream */
-  .pricing-acc {
-    background: rgba(7, 3, 4, 0.03);
-  }
-
-  /* Active card — white, elevated */
   .pricing-acc.active {
     background: #fff !important;
     border-color: rgba(7, 3, 4, 0.12) !important;
@@ -206,8 +188,6 @@ const words = [
     max-height: 600px !important;
     opacity: 1 !important;
   }
-
-  /* Past card — faded back */
   .pricing-acc.past {
     background: rgba(7, 3, 4, 0.02) !important;
     border-color: rgba(7, 3, 4, 0.04) !important;
@@ -222,28 +202,30 @@ const words = [
 
 <script>
   function initPricing(): void {
-    const runway = document.getElementById('pricing-reveal-runway');
-    const split = document.getElementById('pricing-split');
+    const section = document.getElementById('pricing-section');
     const label = document.getElementById('pricing-label');
+    const subtitle = document.getElementById('pricing-subtitle');
     const wordEls = document.querySelectorAll<HTMLElement>('.pricing-word');
     const cards = document.querySelectorAll<HTMLElement>('.pricing-acc');
 
-    if (!runway || !split || !label || !wordEls.length || !cards.length) return;
+    if (!section || !label || !subtitle || !wordEls.length || !cards.length) return;
 
     const wordCount = wordEls.length;
-    const vh = window.innerHeight;
-
-    // Title reveal needs ~2 screens of scroll
-    runway.style.height = `${vh * 2.2}px`;
 
     function onScroll(): void {
-      // === Phase 1: Word reveal ===
-      const runwayRect = runway!.getBoundingClientRect();
-      const revealScrolled = Math.max(0, -runwayRect.top);
-      const revealTotal = runway!.offsetHeight - window.innerHeight;
-      const rp = Math.min(1, revealScrolled / revealTotal);
+      const sectionRect = section!.getBoundingClientRect();
+      const vh = window.innerHeight;
+
+      // Progress: 0 = section top hits viewport bottom, 1 = section bottom hits viewport top
+      const scrolled = vh - sectionRect.top;
+      const progress = Math.max(0, Math.min(1, scrolled / sectionRect.height));
+
+      // === Word reveal on left title (first 30% of scroll) ===
+      const revealEnd = 0.3;
+      const rp = Math.min(1, progress / revealEnd);
 
       label!.style.opacity = String(Math.min(1, rp * 3));
+      subtitle!.style.opacity = String(Math.max(0, Math.min(1, (rp - 0.6) / 0.4)));
 
       wordEls.forEach((el, i) => {
         const ws = (i + 0.1) / (wordCount + 0.3);
@@ -252,11 +234,11 @@ const words = [
         const eased = 1 - Math.pow(1 - wp, 3);
 
         el.style.opacity = String(0.06 + eased * 0.94);
-        el.style.filter = `blur(${6 * (1 - eased)}px)`;
+        el.style.filter = `blur(${5 * (1 - eased)}px)`;
       });
 
-      // === Phase 2: Card accordion ===
-      const triggerPoint = window.innerHeight * 0.5;
+      // === Card accordion on right ===
+      const triggerPoint = vh * 0.5;
       let activeIndex = -1;
 
       cards.forEach((card, i) => {
@@ -277,9 +259,6 @@ const words = [
     }
 
     window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', () => {
-      runway!.style.height = `${window.innerHeight * 2.2}px`;
-    }, { passive: true });
     onScroll();
   }
 
