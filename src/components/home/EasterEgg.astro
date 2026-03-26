@@ -1,0 +1,111 @@
+---
+/**
+ * Hidden tribute section — revealed only to those who keep scrolling past the footer.
+ * "Rei dos Reis, Senhor dos Senhores."
+ */
+---
+
+<section
+  class="relative overflow-hidden bg-ink"
+  aria-label="Homenagem"
+>
+  <!-- Fade-in from black at the top -->
+  <div class="h-32 bg-gradient-to-b from-ink to-transparent"></div>
+
+  <div class="relative mx-auto max-w-[1400px] px-6 py-20 md:px-10 lg:py-32">
+    <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-20">
+
+      <!-- Left: Image -->
+      <div class="relative" data-fade-up>
+        <div class="relative mx-auto max-w-md lg:max-w-none">
+          <!-- Subtle vermillion glow behind the image -->
+          <div
+            class="absolute inset-0 -m-8 rounded-sm"
+            style="background: radial-gradient(ellipse at center, rgba(255,68,1,0.08) 0%, transparent 70%);"
+          ></div>
+          <div class="relative overflow-hidden">
+            <img
+              src="/images/jesus-rei.jpg"
+              alt="Jesus Cristo com a coroa de espinhos — arte em vermelho e preto"
+              class="relative w-full"
+              style="filter: grayscale(1) contrast(1.2);"
+              loading="lazy"
+              decoding="async"
+            />
+            <!-- Vermillion color overlay to match site palette -->
+            <div
+              class="absolute inset-0"
+              style="background: #FF4401; mix-blend-mode: multiply;"
+            ></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Message -->
+      <div class="text-center lg:text-left">
+        <!-- Small label -->
+        <span
+          class="mb-6 block font-mono text-2xs tracking-caps text-vermillion"
+          data-fade-up
+          data-delay="1"
+        >
+          [REI DOS REIS — SENHOR DOS SENHORES]
+        </span>
+
+        <!-- Main quote -->
+        <h2
+          class="font-display tracking-tight text-cream"
+          style="font-size: clamp(3rem, 7vw, 6rem); line-height: 0.95;"
+          data-fade-up
+          data-delay="2"
+        >
+          TODO<br/>
+          JOELHO SE<br/>
+          <span class="text-vermillion">DOBRARÁ.</span>
+        </h2>
+
+        <!-- Scripture reference -->
+        <p
+          class="mt-8 font-script text-cream-fade"
+          style="font-size: clamp(18px, 2.5vw, 28px);"
+          data-fade-up
+          data-delay="3"
+        >
+          E toda língua confessará que<br/>
+          Jesus Cristo é o Senhor.
+        </p>
+
+        <!-- Book reference -->
+        <span
+          class="mt-4 block font-mono text-xs tracking-wider"
+          style="color: rgba(242,237,228,0.2);"
+          data-fade-up
+          data-delay="4"
+        >
+          — Filipenses 2:10-11
+        </span>
+
+        <!-- Oração de Fátima -->
+        <div
+          class="mt-16 border-l-2 border-vermillion/30 pl-6"
+          data-fade-up
+          data-delay="5"
+        >
+          <p
+            class="font-script leading-relaxed text-cream-fade"
+            style="font-size: clamp(16px, 2vw, 22px);"
+          >
+            Meu bom Jesus, perdoai-nos,<br/>
+            livrai-nos do fogo do inferno,<br/>
+            levai as almas todas para o céu<br/>
+            e socorrei principalmente<br/>
+            as que mais precisarem.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Fade-out to black at the bottom -->
+  <div class="h-24 bg-gradient-to-t from-ink to-transparent"></div>
+</section>
