@@ -13,31 +13,29 @@
   <div class="h-32 bg-gradient-to-b from-ink to-transparent"></div>
 
   <div class="relative mx-auto max-w-[1400px] px-6 py-20 md:px-10 lg:py-32">
-    <div class="grid grid-cols-1 items-center gap-12 lg:grid-cols-2 lg:gap-20">
+    <div class="grid grid-cols-1 items-stretch gap-12 lg:grid-cols-2 lg:gap-20">
 
-      <!-- Left: Image -->
+      <!-- Left: Image — text column defines grid height, image fills it -->
       <div class="relative" data-fade-up>
-        <div class="relative mx-auto max-w-md lg:max-w-none">
-          <!-- Subtle vermillion glow behind the image -->
+        <!-- Subtle vermillion glow behind the image -->
+        <div
+          class="absolute inset-0 -m-8 rounded-sm"
+          style="background: radial-gradient(ellipse at center, rgba(255,68,1,0.08) 0%, transparent 70%);"
+        ></div>
+        <div class="absolute inset-0 overflow-hidden">
+          <img
+            src="/images/jesus-rei.jpg"
+            alt="Jesus Cristo com a coroa de espinhos — arte em vermelho e preto"
+            class="h-full w-full object-cover object-top"
+            style="filter: grayscale(1) contrast(1.2);"
+            loading="lazy"
+            decoding="async"
+          />
+          <!-- Vermillion color overlay to match site palette -->
           <div
-            class="absolute inset-0 -m-8 rounded-sm"
-            style="background: radial-gradient(ellipse at center, rgba(255,68,1,0.08) 0%, transparent 70%);"
+            class="absolute inset-0"
+            style="background: #FF4401; mix-blend-mode: multiply;"
           ></div>
-          <div class="relative overflow-hidden">
-            <img
-              src="/images/jesus-rei.jpg"
-              alt="Jesus Cristo com a coroa de espinhos — arte em vermelho e preto"
-              class="relative w-full"
-              style="filter: grayscale(1) contrast(1.2);"
-              loading="lazy"
-              decoding="async"
-            />
-            <!-- Vermillion color overlay to match site palette -->
-            <div
-              class="absolute inset-0"
-              style="background: #FF4401; mix-blend-mode: multiply;"
-            ></div>
-          </div>
         </div>
       </div>
 
