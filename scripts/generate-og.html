@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@400&family=Playfair+Display:ital,wght@1,400&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      width: 1200px;
+      height: 630px;
+      background: #070304;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+    }
+
+    /* Subtle matrix texture */
+    .matrix {
+      position: absolute;
+      inset: 0;
+      opacity: 0.04;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      line-height: 14px;
+      color: #F2EDE4;
+      letter-spacing: 3px;
+      white-space: pre;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* Radial vignette */
+    .vignette {
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 65% 60% at 50% 50%, transparent 0%, #070304 100%);
+    }
+
+    .content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+    }
+
+    .brand {
+      font-family: 'Playfair Display', serif;
+      font-style: italic;
+      font-size: 72px;
+      color: #F2EDE4;
+      letter-spacing: 0.02em;
+      line-height: 1;
+    }
+
+    .digital {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 22px;
+      color: rgba(242, 237, 228, 0.35);
+      letter-spacing: 0.25em;
+      margin-left: 14px;
+      vertical-align: middle;
+    }
+
+    .tagline {
+      margin-top: 28px;
+    }
+
+    .tagline-word {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 120px;
+      line-height: 0.95;
+      letter-spacing: -0.02em;
+    }
+
+    .verm { color: #FF4401; }
+    .cream-text { color: #F2EDE4; }
+
+    .sub {
+      margin-top: 32px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 14px;
+      color: rgba(242, 237, 228, 0.35);
+      letter-spacing: 0.08em;
+    }
+
+    /* Corner tags */
+    .tag-tl, .tag-br {
+      position: absolute;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      color: rgba(242, 237, 228, 0.12);
+      letter-spacing: 0.1em;
+      z-index: 3;
+    }
+    .tag-tl { top: 32px; left: 40px; }
+    .tag-br { bottom: 32px; right: 40px; }
+
+    /* Accent line */
+    .accent-line {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: #FF4401;
+      z-index: 3;
+    }
+  </style>
+</head>
+<body>
+  <div class="matrix" id="matrix"></div>
+  <div class="vignette"></div>
+
+  <span class="tag-tl">[GL_DG_26]</span>
+  <span class="tag-br">gladius.digital</span>
+
+  <div class="content">
+    <div>
+      <span class="brand">Gladius</span>
+      <span class="digital">DIGITAL</span>
+    </div>
+
+    <div class="tagline">
+      <span class="tagline-word verm">CRIAMOS SITES</span><br>
+      <span class="tagline-word cream-text">QUE </span>
+      <span class="tagline-word verm">VENDEM</span>
+    </div>
+
+    <div class="sub">[sites de alta conversão &bull; automação &bull; presença digital]</div>
+  </div>
+
+  <div class="accent-line"></div>
+
+  <script>
+    // Generate matrix text
+    const chars = "GLADIUSDIGITALWEBDESIGNCODECRIATIVIDADEPIXELAUTOMACAO2026";
+    let text = "";
+    for (let r = 0; r < 50; r++) {
+      let row = "";
+      for (let c = 0; c < 80; c++) {
+        row += chars[Math.floor(Math.random() * chars.length)];
+      }
+      text += row + "\n";
+    }
+    document.getElementById("matrix").textContent = text;
+  </script>
+</body>
+</html>
