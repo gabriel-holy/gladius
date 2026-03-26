@@ -1,0 +1,21 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Navbar from "../components/layout/Navbar.astro";
+import Hero from "../components/home/Hero.astro";
+import Works from "../components/home/Works.astro";
+import Services from "../components/home/Services.astro";
+import Pricing from "../components/home/Pricing.astro";
+import Contact from "../components/home/Contact.astro";
+---
+
+<BaseLayout
+  title="Gladius Digital — Criamos sites que vendem por você"
+  description="Sites de alta conversão, automação de leads e presença digital premium para empresas que querem crescer. Americana, SP."
+>
+  <Navbar slot="navbar" />
+  <Hero />
+  <Works />
+  <Services />
+  <Pricing />
+  <Contact />
+</BaseLayout>

@@ -1,0 +1,108 @@
+---
+import MatrixBG from "./MatrixBG.astro";
+---
+
+<section
+  class="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-ink px-6 py-20 md:px-10"
+>
+  <MatrixBG opacity={0.06} />
+
+  <!-- Calligraphic label -->
+  <div
+    class="relative z-[2] mb-5 text-center"
+    data-hero-reveal
+    data-delay="1"
+  >
+    <span class="font-script text-cream" style="font-size: clamp(28px, 3.5vw, 48px); letter-spacing: 0.02em;">
+      Gladius
+    </span>
+    <span class="ml-3 align-middle font-display tracking-mega text-cream" style="font-size: clamp(18px, 2vw, 28px);">
+      DIGITAL
+    </span>
+  </div>
+
+  <!-- Main massive type -->
+  <div class="relative z-[2] text-center">
+    <!-- CRIAMOS -->
+    <div
+      class="font-display text-hero font-normal tracking-tight text-vermillion"
+      data-hero-reveal
+      data-delay="2"
+    >
+      CRIAMOS
+    </div>
+
+    <!-- SITES [2026] QUE -->
+    <div class="flex items-baseline justify-center" style="gap: clamp(12px, 2vw, 24px);">
+      <span
+        class="font-display text-hero font-normal tracking-tight text-vermillion"
+        data-hero-reveal
+        data-delay="3"
+      >
+        SITES
+      </span>
+      <span
+        class="whitespace-nowrap font-mono text-cream-ghost"
+        style="font-size: clamp(11px, 1.2vw, 16px);"
+        data-hero-fade
+        data-delay="6"
+      >
+        [2026]
+      </span>
+      <span
+        class="font-display text-hero font-normal tracking-tight text-cream"
+        data-hero-reveal
+        data-delay="4"
+      >
+        QUE
+      </span>
+    </div>
+
+    <!-- VENDEM [POR VOCÊ] -->
+    <div
+      class="flex items-baseline justify-center font-display text-hero font-normal tracking-tight text-vermillion"
+      style="gap: clamp(12px, 2vw, 24px);"
+      data-hero-reveal
+      data-delay="5"
+    >
+      VENDEM
+      <span
+        class="font-mono text-cream-ghost"
+        style="font-size: clamp(11px, 1.2vw, 16px);"
+      >
+        [POR VOCÊ]
+      </span>
+    </div>
+  </div>
+
+  <!-- Bottom left CTA -->
+  <a
+    href="#contato"
+    class="nav-link absolute bottom-10 left-6 z-[2] font-mono text-sm tracking-wider text-cream no-underline opacity-50 hover:text-vermillion hover:opacity-100 md:left-10"
+    data-hero-fade
+    data-delay="8"
+  >
+    [Iniciar um projeto]
+  </a>
+
+  <!-- Bottom right scroll indicator -->
+  <div
+    class="absolute bottom-10 right-6 z-[2] text-right md:right-10"
+    data-hero-fade
+    data-delay="9"
+    style="opacity: 0;"
+  >
+    <div class="mb-1.5 font-mono text-2xs tracking-widest text-cream">
+      [SCROLL]
+    </div>
+    <div class="mb-1 font-script text-base text-vermillion">
+      Por aqui
+    </div>
+    <div class="flex items-center justify-end gap-2">
+      <span class="font-mono text-xs text-cream-fade">
+        Para ver nosso trabalho.
+      </span>
+      <div class="h-px w-10 bg-vermillion"></div>
+    </div>
+  </div>
+</section>

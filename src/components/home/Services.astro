@@ -1,0 +1,85 @@
+---
+const services = [
+  {
+    num: "01",
+    title: "LANDING\nPAGES",
+    sub: "de Alta Conversão",
+    desc: "Páginas estratégicas focadas em transformar visitantes em clientes reais.",
+  },
+  {
+    num: "02",
+    title: "AUTOMAÇÃO\nDE LEADS",
+    sub: "WhatsApp + CRM",
+    desc: "Integração com WhatsApp Business, CRM e email marketing automatizado.",
+  },
+  {
+    num: "03",
+    title: "SITES\nPREMIUM",
+    sub: "Institucionais",
+    desc: "Presença digital que transmite autoridade. SEO técnico + design sob medida.",
+  },
+  {
+    num: "04",
+    title: "CONSULTORIA\nDIGITAL",
+    sub: "Estratégica",
+    desc: "Análise do funil atual e estratégia para maximizar seus resultados online.",
+  },
+];
+---
+
+<section
+  id="servicos"
+  class="relative overflow-hidden bg-ink px-6 py-24 md:px-10"
+>
+  <!-- Big background text -->
+  <div
+    class="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 select-none whitespace-nowrap font-display tracking-wide"
+    style="font-size: clamp(200px, 25vw, 400px); color: rgba(255,68,1,0.03);"
+    aria-hidden="true"
+  >
+    SERVIÇOS
+  </div>
+
+  <div class="relative mx-auto max-w-site">
+    <div class="mb-20" data-fade-up>
+      <span class="font-mono text-2xs tracking-caps text-vermillion">
+        [O QUE FAZEMOS]
+      </span>
+      <h2 class="mt-2 font-display text-section-title text-cream">
+        CADA PIXEL COM <span class="text-vermillion">PROPÓSITO.</span>
+      </h2>
+    </div>
+
+    <div
+      class="grid grid-cols-1 gap-px bg-cream-ghost sm:grid-cols-2 lg:grid-cols-4"
+    >
+      {services.map((svc, i) => (
+        <div
+          class="svc-card flex min-h-[320px] cursor-default flex-col justify-between overflow-hidden p-7"
+          data-fade-up
+          data-delay={String(Math.min(i + 1, 4))}
+        >
+          <span class="svc-num font-display text-[72px] leading-none">
+            {svc.num}
+          </span>
+          <div>
+            <h3
+              class="whitespace-pre-line font-display text-[26px] leading-tight tracking-snug text-cream"
+            >
+              {svc.title}
+            </h3>
+            <span class="mt-1 block font-script text-base text-vermillion">
+              {svc.sub}
+            </span>
+            <p
+              class="mt-4 font-mono text-xs leading-relaxed"
+              style="color: rgba(242,237,228,0.3);"
+            >
+              {svc.desc}
+            </p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,23 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Página não encontrada | Gladius"
+  description="A página que você procura não existe."
+  noindex={true}
+>
+  <section class="py-22 px-6">
+    <div class="mx-auto max-w-content text-center">
+      <h1 class="font-heading text-hero font-bold tracking-tight text-text-primary">
+        404
+      </h1>
+      <p class="mt-6 text-lg text-text-muted">
+        Página não encontrada.
+      </p>
+      <a href="/" class="mt-8 inline-block rounded-md bg-accent px-6 py-3 text-sm font-medium text-bg-deep hover:bg-accent-hover transition-colors">
+        Voltar ao início
+      </a>
+    </div>
+  </section>
+</BaseLayout>

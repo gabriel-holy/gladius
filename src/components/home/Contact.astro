@@ -1,0 +1,78 @@
+---
+import MatrixBG from "./MatrixBG.astro";
+
+const whatsappUrl = "https://wa.me/5519999999999";
+---
+
+<section
+  id="contato"
+  class="relative overflow-hidden bg-ink px-6 pb-16 pt-36 md:px-10"
+>
+  <MatrixBG opacity={0.04} />
+
+  <div class="relative z-[2] mx-auto max-w-narrow text-center">
+    <div
+      class="mb-4 font-script text-cream-fade"
+      style="font-size: clamp(24px, 3vw, 40px);"
+      data-fade-up
+    >
+      Seu próximo projeto
+    </div>
+
+    <h2
+      class="font-display text-cta-title tracking-snug text-vermillion"
+    >
+      <span class="block" data-fade-up data-delay="1">MERECE O</span>
+      <span class="block" data-fade-up data-delay="2">MELHOR.</span>
+    </h2>
+
+    <p
+      class="mx-auto mt-8 mb-12 max-w-cta font-mono text-[13px] leading-relaxed"
+      style="color: rgba(242,237,228,0.35);"
+      data-fade-up
+      data-delay="3"
+    >
+      Conte-nos sobre seu negócio e receba uma proposta personalizada em até 24h.
+    </p>
+
+    <a
+      href={whatsappUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="btn-cta-primary inline-flex cursor-pointer items-center gap-3 px-14 py-5 font-display text-lg tracking-widest no-underline"
+      data-fade-up
+      data-delay="4"
+    >
+      [FALAR PELO WHATSAPP →]
+    </a>
+
+    <div
+      class="mt-12 flex justify-center gap-8"
+      data-fade-up
+      data-delay="5"
+    >
+      <span class="font-mono text-xs" style="color: rgba(242,237,228,0.15);">
+        contato@gladius.digital
+      </span>
+      <span class="font-mono text-xs" style="color: rgba(242,237,228,0.15);">
+        Americana, SP
+      </span>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <div class="relative z-[2] mx-auto mt-28 flex max-w-site items-center justify-between border-t border-cream-ghost pt-6">
+    <div class="flex items-baseline gap-1.5">
+      <span class="font-script text-lg text-cream">Gladius</span>
+      <span class="font-mono text-[8px] tracking-caps" style="color: rgba(242,237,228,0.2);">
+        DIGITAL
+      </span>
+    </div>
+    <span class="font-mono text-2xs" style="color: rgba(242,237,228,0.12);">
+      © 2026 — Todos os direitos reservados
+    </span>
+    <span class="hidden font-mono text-2xs md:block" style="color: rgba(242,237,228,0.12);">
+      [GL_DG_26]
+    </span>
+  </div>
+</section>

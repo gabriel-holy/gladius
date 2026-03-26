@@ -1,0 +1,114 @@
+---
+import { ClientRouter } from "astro:transitions";
+import SEOHead from "../components/shared/SEOHead.astro";
+import Analytics from "@vercel/analytics/astro";
+import SpeedInsights from "@vercel/speed-insights/astro";
+import "../styles/global.css";
+
+interface Props {
+  title: string;
+  description: string;
+  ogImage?: string;
+  type?: "website" | "product" | "article";
+  structuredData?: Record<string, unknown>;
+  noindex?: boolean;
+  articleMeta?: {
+    publishedTime: string;
+    modifiedTime?: string;
+    author: string;
+    tags?: string[];
+    section?: string;
+  };
+}
+
+const { title, description, ogImage, type, structuredData, noindex, articleMeta } = Astro.props;
+---
+
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preload"
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@300;400;500&family=Pinyon+Script&display=swap"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=IBM+Plex+Mono:wght@300;400;500&family=Pinyon+Script&display=swap"
+      />
+    </noscript>
+    <link rel="manifest" href="/manifest.json" />
+    <ClientRouter />
+    <SEOHead
+      title={title}
+      description={description}
+      ogImage={ogImage}
+      type={type}
+      structuredData={structuredData}
+      noindex={noindex}
+      articleMeta={articleMeta}
+    />
+  </head>
+  <body class="min-h-screen bg-ink font-mono text-cream antialiased">
+    <a href="#main-content" class="skip-link">Pular para o conteúdo principal</a>
+    <div id="scroll-progress" aria-hidden="true"></div>
+
+    <slot name="navbar" />
+
+    <main id="main-content">
+      <slot />
+    </main>
+
+    <slot name="footer" />
+
+    <Analytics />
+    <SpeedInsights />
+
+    <script>
+      function initRevealAnimations(): void {
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (prefersReducedMotion) return;
+
+        const selectors = '[data-fade-up], [data-hero-reveal], [data-hero-fade]';
+        const elements = document.querySelectorAll<HTMLElement>(selectors);
+        if (!elements.length) return;
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            });
+          },
+          { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
+        );
+
+        elements.forEach((el) => observer.observe(el));
+      }
+
+      function initScrollProgress(): void {
+        if (CSS.supports('animation-timeline', 'scroll()')) return;
+        const bar = document.getElementById('scroll-progress');
+        if (!bar) return;
+        window.addEventListener('scroll', () => {
+          const h = document.documentElement;
+          const pct = h.scrollTop / (h.scrollHeight - h.clientHeight);
+          bar.style.transform = `scaleX(${pct})`;
+        }, { passive: true });
+      }
+
+      function initAll(): void {
+        try { initRevealAnimations(); } catch (_) {}
+        try { initScrollProgress(); } catch (_) {}
+      }
+
+      initAll();
+      document.addEventListener('astro:after-swap', initAll);
+    </script>
+  </body>
+</html>
