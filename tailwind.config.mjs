@@ -22,6 +22,7 @@ export default {
         display: ["'Bebas Neue'", "sans-serif"],
         mono: ["'IBM Plex Mono'", "monospace"],
         script: ["'Pinyon Script'", "cursive"],
+        brand: ["'Playfair Display'", "serif"],
       },
       fontSize: {
         "2xs": ["0.625rem", { lineHeight: "1.4" }],
