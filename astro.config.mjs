@@ -13,5 +13,5 @@ export default defineConfig({
     }),
   ],
   output: "static",
-  site: "https://gladius.com.br",
+  site: "https://gladius.digital",
 });
