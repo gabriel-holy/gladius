@@ -1,11 +1,11 @@
 {
-  "name": "Gladius",
+  "name": "Gladius Digital",
   "short_name": "Gladius",
-  "description": "TODO: Definir descrição",
+  "description": "Sites de alta conversão, automação de leads e presença digital premium para empresas que querem crescer.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#1a1a1a",
-  "theme_color": "#1a1a1a",
+  "background_color": "#070304",
+  "theme_color": "#070304",
   "lang": "pt-BR",
   "icons": [
     {

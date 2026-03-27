@@ -4,4 +4,4 @@ Disallow: /api/
 Disallow: /_astro/
 Disallow: /404
 
-Sitemap: https://gladius.com.br/sitemap-index.xml
+Sitemap: https://gladius.digital/sitemap-index.xml

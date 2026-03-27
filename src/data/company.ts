@@ -1,15 +1,16 @@
 export const company = {
-  name: "Gladius",
-  tagline: "TODO: Definir tagline",
+  name: "Gladius Digital",
+  tagline: "Criamos sites que vendem por você",
+  domain: "gladius.digital",
   whatsapp: "5511994095913",
-  email: "contato@gladius.com.br",
+  email: "contato@gladius.digital",
   foundedYear: 2025,
   address: {
-    street: "TODO: Endereço",
-    neighborhood: "TODO: Bairro",
-    city: "TODO: Cidade",
+    street: "Americana",
+    neighborhood: "Centro",
+    city: "Americana",
     state: "SP",
-    zip: "00000-000",
+    zip: "13465-000",
     country: "BR",
   },
 };

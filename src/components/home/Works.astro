@@ -44,6 +44,7 @@ import { PROJECTS } from "../../data/projects";
         {PROJECTS.map((project, i) => (
           <a
             href="#contato"
+            aria-label={`Ver projeto ${project.title} — ${project.result}`}
             class="group relative mr-8 flex h-[70vh] w-[75vw] flex-shrink-0 cursor-pointer flex-col justify-end overflow-hidden border border-cream-ghost p-8 no-underline transition-colors duration-300 hover:border-vermillion-border md:mr-12 md:w-[40vw] md:p-12"
             data-fade-up
             data-delay={String(Math.min(i + 1, 5))}
