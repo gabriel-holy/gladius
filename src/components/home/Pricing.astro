@@ -9,56 +9,15 @@ interface Plan {
 }
 
 const plans: Plan[] = [
-  {
-    id: "essencial",
-    name: "ESSENCIAL",
-    price: "1.497",
-    tagline: "Presença digital profissional",
-    features: [
-      "Landing page de alta conversão",
-      "Design responsivo premium",
-      "SEO técnico otimizado",
-      "Formulário + WhatsApp",
-      "Entrega em até 7 dias",
-    ],
-  },
-  {
-    id: "profissional",
-    name: "PROFISSIONAL",
-    price: "2.997",
-    tagline: "Para quem quer crescer de verdade",
-    popular: true,
-    features: [
-      "Tudo do Essencial +",
-      "Até 5 páginas otimizadas",
-      "Funil de captação automatizado",
-      "CRM & Email Marketing",
-      "Pixel Facebook & Google",
-      "Dashboard de métricas",
-      "30 dias de suporte",
-    ],
-  },
-  {
-    id: "premium",
-    name: "PREMIUM",
-    price: "4.997",
-    tagline: "Solução completa sob medida",
-    features: [
-      "Tudo do Profissional +",
-      "Design ilimitado",
-      "Agendamento online",
-      "Blog com CMS",
-      "Automações avançadas",
-      "Treinamento da equipe",
-      "60 dias de suporte dedicado",
-    ],
-  },
+  { id: "essencial", name: "ENTENDER", price: "01", tagline: "Começar pelo problema real", features: ["Conhecer a rotina da empresa", "Identificar tarefas repetitivas", "Mapear sistemas existentes", "Entender restrições e prioridades", "Definir o que precisa melhorar"] },
+  { id: "profissional", name: "DEFINIR", price: "02", tagline: "Desenhar uma solução viável", popular: true, features: ["Avaliar alternativas técnicas", "Delimitar o escopo", "Mapear integrações necessárias", "Definir critérios de aceite", "Combinar etapas de entrega", "Apresentar investimento e condições", "Aprovar antes de implementar"] },
+  { id: "premium", name: "CONSTRUIR", price: "03", tagline: "Implementar e validar por etapas", features: ["Desenvolver a solução definida", "Integrar os sistemas previstos", "Testar com o processo real", "Validar os critérios combinados", "Documentar o funcionamento", "Orientar a equipe conforme escopo", "Definir suporte e continuidade"] },
 ];
 
 const words = [
-  { text: "TRANSPARENTE.", color: "ink" },
-  { text: "SEM", color: "vermillion" },
-  { text: "SURPRESAS.", color: "vermillion" },
+  { text: "ENTENDER.", color: "ink" },
+  { text: "DEFINIR.", color: "vermillion" },
+  { text: "CONSTRUIR.", color: "vermillion" },
 ];
 ---
 
@@ -79,7 +38,7 @@ const words = [
           id="pricing-label"
           style="opacity: 0;"
         >
-          [INVESTIMENTO]
+          [COMO FUNCIONA]
         </span>
 
         <h2 class="font-display text-ink" style="font-size: clamp(2.2rem, 4vw, 4rem); line-height: 1.08;">
@@ -102,7 +61,7 @@ const words = [
           id="pricing-subtitle"
           style="opacity: 0;"
         >
-          Parcelamento em até 12×.<br/>Projetos customizados sob consulta.
+          Escopo e investimento definidos<br/>a partir da sua necessidade.
         </p>
       </div>
     </div>
@@ -110,7 +69,7 @@ const words = [
     <!-- RIGHT (7 cols) — Accordion cards -->
     <div class="relative py-20 md:col-span-7 md:py-40" id="pricing-cards-col">
       <div class="mb-8 font-mono text-sm tracking-wider text-ink/30">
-        Nossos planos ↓
+        Nosso processo ↓
       </div>
 
       {plans.map((plan, i) => (
@@ -130,7 +89,7 @@ const words = [
               </h3>
             </div>
             <span class="pricing-acc-price font-display text-[24px] tracking-snug text-ink/15 transition-all duration-500">
-              R$ {plan.price}
+              Etapa {plan.price}
             </span>
           </div>
 
@@ -160,7 +119,7 @@ const words = [
                     : "border border-ink/15 bg-transparent text-ink",
                 ]}
               >
-                COMEÇAR AGORA
+                CONVERSAR SOBRE O PROCESSO
               </a>
             </div>
           </div>

@@ -20,14 +20,14 @@ import { PROJECTS } from "../../data/projects";
         <div class="mx-auto flex max-w-site items-end justify-between">
           <div>
             <span class="font-mono text-2xs tracking-caps text-vermillion">
-              [TRABALHOS SELECIONADOS]
+              [PROJETO REAL + POSSIBILIDADES]
             </span>
             <h2 class="mt-2 font-display text-section-title tracking-snug text-cream">
-              FEATURED <span class="text-vermillion">WORKS</span>
+              PROJETO E <span class="text-vermillion">IDEIAS</span>
             </h2>
           </div>
           <span class="hidden font-mono text-xs text-cream-ghost md:block">
-            {String(PROJECTS.length).padStart(3, '0')} projetos
+            {String(PROJECTS.length).padStart(3, '0')} exemplos
           </span>
         </div>
       </div>
@@ -43,8 +43,8 @@ import { PROJECTS } from "../../data/projects";
 
         {PROJECTS.map((project, i) => (
           <a
-            href="#contato"
-            aria-label={`Ver projeto ${project.title} — ${project.result}`}
+            href={project.id === 1 ? "https://barricasindustriais.com/" : "#contato"}
+            aria-label={`Conhecer ${project.title} — ${project.result}`}
             class="group relative mr-8 flex h-[70vh] w-[75vw] flex-shrink-0 cursor-pointer flex-col justify-end overflow-hidden border border-cream-ghost p-8 no-underline transition-colors duration-300 hover:border-vermillion-border md:mr-12 md:w-[40vw] md:p-12"
             data-fade-up
             data-delay={String(Math.min(i + 1, 5))}

@@ -7,53 +7,12 @@ export interface Project {
   desc: string;
 }
 
+// One confirmed client website and five clearly labeled illustrative use cases.
 export const PROJECTS: Project[] = [
-  {
-    id: 1,
-    title: "MAISON DORÉE",
-    cat: "landing page",
-    tag: "GL_01_26",
-    result: "+340% reservas",
-    desc: "Landing page + reservas via WhatsApp Business para restaurante fine dining.",
-  },
-  {
-    id: 2,
-    title: "CLÍNICA VITALE",
-    cat: "funil + automação",
-    tag: "GL_02_26",
-    result: "+180 leads/mês",
-    desc: "Funil automatizado com agendamento online para clínica de estética.",
-  },
-  {
-    id: 3,
-    title: "OPUS ADVOCACIA",
-    cat: "site institucional",
-    tag: "GL_03_25",
-    result: "2.4× consultas",
-    desc: "Site institucional com formulário inteligente de triagem de casos.",
-  },
-  {
-    id: 4,
-    title: "STUDIO FORMA",
-    cat: "portfólio digital",
-    tag: "GL_04_25",
-    result: "+95% tempo no site",
-    desc: "Portfólio interativo com galeria imersiva e captação de orçamentos.",
-  },
-  {
-    id: 5,
-    title: "BELLA FIORE",
-    cat: "e-commerce",
-    tag: "GL_05_26",
-    result: "3.1× vendas",
-    desc: "E-commerce simplificado com entrega automatizada para floricultura.",
-  },
-  {
-    id: 6,
-    title: "DR. MENDES",
-    cat: "landing page",
-    tag: "GL_06_25",
-    result: "+220% agendamentos",
-    desc: "Landing page de captação com remarketing para consultório odontológico.",
-  },
+  { id: 1, title: "BARRICAS INDUSTRIAIS", cat: "site comercial · King Pack", tag: "PROJETO_REAL", result: "Site desenvolvido por Gabriel", desc: "Apresentação de embalagens industriais, especificações dos produtos e acesso ao atendimento comercial." },
+  { id: 2, title: "PEDIDOS", cat: "exemplo ilustrativo", tag: "IDEIA_02", result: "Possibilidade a avaliar", desc: "Exemplo conceitual: organizar pedidos e etapas de atendimento. Não é um projeto de cliente." },
+  { id: 3, title: "INTEGRAÇÕES", cat: "exemplo ilustrativo", tag: "IDEIA_03", result: "Possibilidade a avaliar", desc: "Exemplo conceitual: conectar sistemas para reduzir lançamentos repetidos. Não é um projeto de cliente." },
+  { id: 4, title: "ORÇAMENTOS", cat: "exemplo ilustrativo", tag: "IDEIA_04", result: "Possibilidade a avaliar", desc: "Exemplo conceitual: estruturar informações e acompanhar propostas comerciais. Não é um projeto de cliente." },
+  { id: 5, title: "OPERAÇÃO", cat: "exemplo ilustrativo", tag: "IDEIA_05", result: "Possibilidade a avaliar", desc: "Exemplo conceitual: dar visibilidade às etapas e pendências do trabalho. Não é um projeto de cliente." },
+  { id: 6, title: "AUTOMAÇÃO", cat: "exemplo ilustrativo", tag: "IDEIA_06", result: "Possibilidade a avaliar", desc: "Exemplo conceitual: automatizar uma tarefa repetitiva após entender suas regras. Não é um projeto de cliente." },
 ];
