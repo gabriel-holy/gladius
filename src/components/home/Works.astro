@@ -2,150 +2,30 @@
 import { PROJECTS } from "../../data/projects";
 ---
 
-<!--
-  Horizontal scroll pinning:
-  - Outer div has height = 100vh + (N cards × 100vw) to create scroll runway
-  - Inner sticky container stays pinned at top
-  - JS translates the cards track horizontally as user scrolls through the runway
--->
-<section id="trabalhos" class="relative bg-ink">
-  <!-- Scroll runway — height creates the vertical space needed for horizontal travel -->
-  <div id="works-runway">
-
-    <!-- Sticky viewport — stays pinned while user scrolls through runway -->
-    <div class="sticky top-0 h-screen overflow-hidden">
-
-      <!-- Section header (absolute over the cards) -->
-      <div class="absolute inset-x-0 top-0 z-10 px-6 pt-10 md:px-10" data-fade-up>
-        <div class="mx-auto flex max-w-site items-end justify-between">
-          <div>
-            <span class="font-mono text-2xs tracking-caps text-vermillion">
-              [TRABALHOS SELECIONADOS]
-            </span>
-            <h2 class="mt-2 font-display text-section-title tracking-snug text-cream">
-              FEATURED <span class="text-vermillion">WORKS</span>
-            </h2>
-          </div>
-          <span class="hidden font-mono text-xs text-cream-ghost md:block">
-            {String(PROJECTS.length).padStart(3, '0')} projetos
-          </span>
-        </div>
-      </div>
-
-      <!-- Horizontal track — translated via JS -->
-      <div
-        id="works-track"
-        class="absolute inset-0 flex items-center"
-        style="will-change: transform;"
-      >
-        <!-- Left spacer so first card starts after header -->
-        <div class="flex-shrink-0" style="width: 40vw;" aria-hidden="true"></div>
-
-        {PROJECTS.map((project, i) => (
-          <a
-            href="#contato"
-            aria-label={`Ver projeto ${project.title} — ${project.result}`}
-            class="group relative mr-8 flex h-[70vh] w-[75vw] flex-shrink-0 cursor-pointer flex-col justify-end overflow-hidden border border-cream-ghost p-8 no-underline transition-colors duration-300 hover:border-vermillion-border md:mr-12 md:w-[40vw] md:p-12"
-            data-fade-up
-            data-delay={String(Math.min(i + 1, 5))}
-          >
-            <!-- Big number background -->
-            <span
-              class="pointer-events-none absolute right-6 top-6 font-display leading-none text-cream-ghost transition-colors duration-500 group-hover:text-vermillion/10 md:right-10 md:top-8"
-              style="font-size: clamp(120px, 15vw, 200px);"
-              aria-hidden="true"
-            >
-              {String(project.id).padStart(2, '0')}
-            </span>
-
-            <!-- Tag -->
-            <span class="mb-4 font-mono text-2xs tracking-wide text-cream-ghost transition-colors duration-300 group-hover:text-vermillion">
-              [{project.tag}]
-            </span>
-
-            <!-- Title -->
-            <h3 class="mb-2 font-display tracking-snug text-cream transition-colors duration-300 group-hover:text-vermillion" style="font-size: clamp(32px, 4vw, 56px); line-height: 1;">
-              {project.title}
-            </h3>
-
-            <!-- Category -->
-            <span class="mb-6 font-mono text-2xs tracking-wider" style="color: rgba(242,237,228,0.25);">
-              [{project.cat}]
-            </span>
-
-            <!-- Description -->
-            <p class="mb-6 max-w-sm font-mono text-sm leading-relaxed" style="color: rgba(242,237,228,0.35);">
-              {project.desc}
-            </p>
-
-            <!-- Result + Arrow -->
-            <div class="flex items-center justify-between">
-              <span class="font-mono text-sm tracking-wide text-vermillion">
-                {project.result}
-              </span>
-              <span class="font-display text-xl text-vermillion opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-100" style="transform: translateX(-12px);">
-                →
-              </span>
-            </div>
-          </a>
-        ))}
-
-        <!-- Right spacer -->
-        <div class="flex-shrink-0" style="width: 20vw;" aria-hidden="true"></div>
-      </div>
-
-      <!-- Bottom scroll progress indicator -->
-      <div class="absolute bottom-8 left-6 right-6 z-10 md:left-10 md:right-10">
-        <div class="mx-auto max-w-site">
-          <div class="flex items-center gap-4">
-            <span class="font-mono text-2xs tracking-wider text-cream-ghost">
-              [SCROLL]
-            </span>
-            <div class="h-px flex-1 bg-cream-ghost">
-              <div
-                id="works-progress"
-                class="h-full bg-vermillion"
-                style="width: 0%; transition: width 0.1s linear;"
-              />
-            </div>
-            <span class="font-mono text-2xs tracking-wider text-cream-ghost">
-              [{String(PROJECTS.length).padStart(2, '0')}]
-            </span>
-          </div>
-        </div>
-      </div>
+<section id="trabalhos" class="relative bg-ink px-6 py-28 md:px-10">
+  <div class="mx-auto max-w-site">
+    <div class="mb-12" data-fade-up>
+      <span class="font-mono text-2xs tracking-caps text-vermillion">[PROJETO REAL]</span>
+      <h2 class="mt-2 font-display text-section-title text-cream">
+        DO PLANO <span class="text-vermillion">À ENTREGA.</span>
+      </h2>
     </div>
+    {PROJECTS.map((project) => (
+      <article class="grid gap-10 border border-cream-ghost p-8 md:grid-cols-2 md:p-12" data-fade-up>
+        <div>
+          <span class="font-mono text-xs tracking-wider text-vermillion">{project.category}</span>
+          <h3 class="mt-4 font-display text-[clamp(2rem,5vw,4rem)] leading-none text-cream">{project.title}</h3>
+          <p class="mt-6 max-w-text font-mono text-sm leading-relaxed text-cream-fade">{project.description}</p>
+          <a href={project.url} target="_blank" rel="noopener noreferrer" class="mt-8 inline-block font-mono text-sm text-vermillion underline underline-offset-4">
+            Visitar site do projeto ↗<span class="sr-only"> (abre em nova aba)</span>
+          </a>
+        </div>
+        <dl class="space-y-6 font-mono text-sm leading-relaxed">
+          <div><dt class="text-cream">Contexto</dt><dd class="mt-2 text-cream-fade">Apresentação comercial de embalagens industriais na web.</dd></div>
+          <div><dt class="text-cream">Entrega visível</dt><dd class="mt-2 text-cream-fade">Páginas de produtos, especificações e acesso ao atendimento pelo WhatsApp.</dd></div>
+          <div><dt class="text-cream">Escopo apresentado</dt><dd class="mt-2 text-cream-fade">Site comercial voltado à apresentação dos produtos e ao contato com a equipe de vendas.</dd></div>
+        </dl>
+      </article>
+    ))}
   </div>
 </section>
-
-<script>
-  function initHorizontalScroll(): void {
-    const runway = document.getElementById('works-runway');
-    const track = document.getElementById('works-track');
-    const progress = document.getElementById('works-progress');
-    if (!runway || !track || !progress) return;
-
-    function calculateAndApply(): void {
-      const trackWidth = track!.scrollWidth;
-      const viewportWidth = window.innerWidth;
-      const scrollDistance = trackWidth - viewportWidth;
-
-      // Set runway height: viewport + horizontal scroll distance
-      runway!.style.height = `${window.innerHeight + scrollDistance}px`;
-
-      const runwayRect = runway!.getBoundingClientRect();
-      const scrolled = -runwayRect.top;
-      const fraction = Math.max(0, Math.min(1, scrolled / scrollDistance));
-
-      track!.style.transform = `translateX(${-fraction * scrollDistance}px)`;
-      progress!.style.width = `${fraction * 100}%`;
-    }
-
-    calculateAndApply();
-    window.addEventListener('scroll', calculateAndApply, { passive: true });
-    window.addEventListener('resize', calculateAndApply, { passive: true });
-  }
-
-  initHorizontalScroll();
-  document.addEventListener('astro:after-swap', initHorizontalScroll);
-</script>

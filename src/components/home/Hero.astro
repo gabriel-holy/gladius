@@ -66,27 +66,27 @@ const digitalLetters = "DIGITAL".split("");
           </span>
         </div>
 
-        <!-- CRIAMOS -->
+        <!-- SOFTWARE -->
         <h1 class="relative z-[2] text-center font-display font-normal tracking-tight" style="font-size: inherit; line-height: inherit;">
-          <span class="sr-only">Criamos sites que vendem por você</span>
+          <span class="sr-only">Software sob medida para o seu negócio</span>
           <div
-            class="font-display text-hero font-normal tracking-tight text-vermillion hero-word"
+            class="font-display text-[clamp(3.4rem,12vw,10rem)] leading-[0.95] font-normal tracking-tight text-vermillion hero-word"
             style="opacity: 0; transform: translateY(30px);"
             data-word="0"
             aria-hidden="true"
           >
-            CRIAMOS
+            SOFTWARE
           </div>
 
-          <!-- SITES [2026] QUE -->
+          <!-- PARA [2026] SEU -->
           <div class="flex items-baseline justify-center" style="gap: clamp(12px, 2vw, 24px);">
             <span
-              class="font-display text-hero font-normal tracking-tight text-vermillion hero-word"
+              class="font-display text-[clamp(3.4rem,12vw,10rem)] leading-[0.95] font-normal tracking-tight text-vermillion hero-word"
               style="opacity: 0; transform: translateY(30px);"
               data-word="1"
               aria-hidden="true"
             >
-              SITES
+              PARA
             </span>
             <span
               class="whitespace-nowrap font-mono text-cream-ghost hero-word"
@@ -96,28 +96,32 @@ const digitalLetters = "DIGITAL".split("");
               [2026]
             </span>
             <span
-              class="font-display text-hero font-normal tracking-tight text-cream hero-word"
+              class="font-display text-[clamp(3.4rem,12vw,10rem)] leading-[0.95] font-normal tracking-tight text-cream hero-word"
               style="opacity: 0; transform: translateY(30px);"
               data-word="2"
               aria-hidden="true"
             >
-              QUE
+              SEU
             </span>
           </div>
 
-          <!-- VENDEM [POR VOCÊ] -->
+          <!-- NEGÓCIO [SOB MEDIDA] -->
           <div
-            class="flex items-baseline justify-center font-display text-hero font-normal tracking-tight text-vermillion hero-word"
+            class="flex items-baseline justify-center font-display text-[clamp(3.4rem,12vw,10rem)] leading-[0.95] font-normal tracking-tight text-vermillion hero-word"
             style="gap: clamp(12px, 2vw, 24px); opacity: 0; transform: translateY(30px);"
             data-word="3"
             aria-hidden="true"
           >
-            VENDEM
+            NEGÓCIO
             <span class="font-mono text-cream-ghost" style="font-size: clamp(11px, 1.2vw, 16px);">
-              [POR VOCÊ]
+              [SOB MEDIDA]
             </span>
           </div>
         </h1>
+        <p class="mt-6 max-w-text text-center font-mono text-sm leading-relaxed text-cream-fade">
+          Arquitetura de soluções, sistemas e integrações para melhorar os processos da sua empresa.
+          Entender o trabalho vem antes de escolher a tecnologia.
+        </p>
       </div>
 
       <!-- Bottom left CTA -->
@@ -126,7 +130,7 @@ const digitalLetters = "DIGITAL".split("");
         id="hero-cta"
         class="nav-link absolute bottom-10 left-6 z-[2] font-mono text-sm tracking-wider text-cream no-underline opacity-0 hover:text-vermillion hover:opacity-100 md:left-10"
       >
-        [Iniciar um projeto]
+        [Conversar sobre um desafio]
       </a>
 
       <!-- Bottom right scroll indicator -->
@@ -143,7 +147,7 @@ const digitalLetters = "DIGITAL".split("");
         </div>
         <div class="flex items-center justify-end gap-2">
           <span class="font-mono text-xs text-cream-fade">
-            Para ver nosso trabalho.
+            Soluções, processo e projeto.
           </span>
           <div class="h-px w-10 bg-vermillion"></div>
         </div>
@@ -175,9 +179,8 @@ const digitalLetters = "DIGITAL".split("");
     let introComplete = false;
     const LETTER_DELAY = 120;    // ms between each letter
     const FLASH_DURATION = 200;  // ms letter stays vermillion before turning cream
-    const DIGITAL_DELAY = 60;    // ms between DIGITAL letters
 
-    function playIntro(): void {
+    const playIntro = (): void => {
       // Animate "Gladius" letters
       letters.forEach((el, i) => {
         const startTime = i * LETTER_DELAY;

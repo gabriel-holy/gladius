@@ -1,7 +1,8 @@
 ---
 import MatrixBG from "./MatrixBG.astro";
+import { company } from "../../data/company";
 
-const whatsappUrl = "https://wa.me/5511994095913";
+const whatsappUrl = `https://wa.me/${company.whatsapp}`;
 ---
 
 <section
@@ -16,23 +17,23 @@ const whatsappUrl = "https://wa.me/5511994095913";
       style="font-size: clamp(24px, 3vw, 40px);"
       data-fade-up
     >
-      Seu próximo projeto
+      Qual processo precisa melhorar?
     </div>
 
     <h2
       class="font-display text-cta-title tracking-snug text-vermillion"
     >
-      <span class="block" data-fade-up data-delay="1">MERECE O</span>
-      <span class="block" data-fade-up data-delay="2">MELHOR.</span>
+      <span class="block" data-fade-up data-delay="1">VAMOS</span>
+      <span class="block" data-fade-up data-delay="2">ENTENDER.</span>
     </h2>
 
     <p
       class="mx-auto mt-8 mb-12 max-w-cta font-mono text-[13px] leading-relaxed"
-      style="color: rgba(242,237,228,0.35);"
+      style="color: rgba(242,237,228,0.65);"
       data-fade-up
       data-delay="3"
     >
-      Conte-nos sobre seu negócio e receba uma proposta personalizada em até 24h.
+      Converse com Gabriel sobre uma situação concreta da sua empresa. A partir dela, podemos avaliar o problema, os sistemas envolvidos e um possível próximo passo.
     </p>
 
     <a
@@ -51,9 +52,6 @@ const whatsappUrl = "https://wa.me/5511994095913";
       data-fade-up
       data-delay="5"
     >
-      <span class="font-mono text-xs" style="color: rgba(242,237,228,0.15);">
-        contato@gladius.digital
-      </span>
       <span class="font-mono text-xs" style="color: rgba(242,237,228,0.15);">
         Americana, SP
       </span>
