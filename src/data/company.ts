@@ -3,6 +3,7 @@ export const company = {
   tagline: "Software, integrações e automação para empresas",
   domain: "gladius.digital",
   whatsapp: "5511994095913",
+  email: "",
   foundedYear: 2025,
   address: {
     street: "Americana",

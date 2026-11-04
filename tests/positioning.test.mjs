@@ -1,21 +1,29 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-const html = readFileSync(new URL('../dist/index.html', import.meta.url), 'utf8');
-test('built homepage communicates solutions and a discovery-led process', () => {
-  const normalized = html.replace(/\s+/g, ' ').toLowerCase();
-  for (const text of ['arquitetura de soluções', 'sistemas sob medida', 'integração e automação', 'sites e portais', 'id="processo"', 'id="precos"', 'id="contato"']) assert.ok(normalized.includes(text), text);
+import { execFileSync } from 'node:child_process';
+const base = '2d39a03d7b1a8bf1a0b5a71d35bf03072efac4df';
+const html = readFileSync('dist/index.html', 'utf8');
+const files = ['src/components/home/Hero.astro','src/components/home/Works.astro','src/components/home/Services.astro','src/components/home/Pricing.astro','src/components/home/Contact.astro','src/components/layout/Navbar.astro'];
+test('original fonts, styles, animations and component markup remain intact', () => {
+  for (const path of files) {
+    const original = execFileSync('git', ['show', `${base}:${path}`], {encoding:'utf8'});
+    const current = readFileSync(path,'utf8');
+    for (const regex of [/<script\b[^>]*>[\s\S]*?<\/script>/g, /<style\b[^>]*>[\s\S]*?<\/style>/g, /\b(?:class|class:list|style|data-[\w-]+)=(?:"[^"]*"|\{[\s\S]*?\})/g]) {
+      assert.deepEqual(current.match(regex), original.match(regex), path);
+    }
+    const tags = s => [...s.replace(/<!--[\s\S]*?-->/g,'').matchAll(/<\/?([a-zA-Z][\w.-]*)\b/g)].map(m=>m[0]);
+    assert.deepEqual(tags(current),tags(original),path);
+  }
 });
-test('real case and primary contact are present without invented email or package prices', () => {
+test('section order and original social image are preserved', () => {
+  const old = execFileSync('git',['show',`${base}:public/og-default.jpg`]);
+  assert.deepEqual(readFileSync('public/og-default.jpg'),old);
+  assert.ok(html.indexOf('id="trabalhos"') < html.indexOf('id="servicos"'));
+});
+test('honest copy and existing anchors are present', () => {
   assert.ok(html.includes('https://barricasindustriais.com/'));
-  assert.ok(html.includes('https://wa.me/5511994095913'));
-  assert.ok(!html.includes('contato@gladius.digital'));
-  assert.ok(!/R\$|mailto:|24 horas|24h/.test(html));
-});
-test('all homepage navigation fragments have matching anchors', () => {
+  assert.ok(html.includes('exemplo ilustrativo'));
+  assert.ok(!/contato@gladius.digital|R\$|24h|340%|180 leads/.test(html));
   for (const [, id] of html.matchAll(/href="#([^"\s]+)"/g)) assert.ok(html.includes(`id="${id}"`), `missing #${id}`);
-});
-test('social sharing image exists and metadata reflects the new positioning', () => {
-  assert.ok(html.includes('Arquitetura de software e automação'));
-  assert.ok(readFileSync(new URL('../public/og-default.jpg', import.meta.url)).length > 1000);
 });
