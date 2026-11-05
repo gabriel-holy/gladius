@@ -1,0 +1,79 @@
+---
+import { Image } from "astro:assets";
+import portrait from "../../assets/gabriel-oliveira.webp";
+import { profile } from "../../data/profile";
+---
+
+<section
+  id="sobre"
+  aria-labelledby="sobre-titulo"
+  class="bg-ink px-6 py-24 md:px-10 md:py-28"
+>
+  <div class="mx-auto grid max-w-site items-center gap-10 border-t border-cream-ghost pt-16 md:grid-cols-[minmax(0,0.85fr)_minmax(0,1.15fr)] md:gap-20">
+    <div class="relative mx-auto w-full max-w-[420px] md:mx-0" data-fade-up>
+      <div class="absolute -bottom-3 -right-3 h-full w-full border border-vermillion-border" aria-hidden="true"></div>
+      <Image
+        src={portrait}
+        alt="Gabriel Oliveira, arquiteto de software da Gladius Digital"
+        width={840}
+        widths={[420, 630, 840]}
+        sizes="(min-width: 768px) 420px, (min-width: 468px) 420px, calc(100vw - 48px)"
+        format="webp"
+        quality={85}
+        loading="lazy"
+        decoding="async"
+        class="relative aspect-square h-auto w-full object-cover"
+      />
+    </div>
+
+    <div>
+      <p class="font-mono text-2xs tracking-caps text-vermillion" data-fade-up>
+        [QUEM ESTÁ POR TRÁS DA GLADIUS]
+      </p>
+      <h2 id="sobre-titulo" class="mt-4 font-display text-section-title text-cream" data-fade-up data-delay="1">
+        GABRIEL <span class="text-vermillion">OLIVEIRA.</span>
+      </h2>
+      <p class="mt-4 font-mono text-base text-cream" data-fade-up data-delay="2">
+        {profile.role}
+      </p>
+      <p class="mt-6 max-w-[540px] font-mono text-base leading-relaxed text-cream-fade" data-fade-up data-delay="3">
+        Sou Gabriel, o profissional por trás da Gladius. Trabalho com arquitetura de soluções, sistemas sob medida, integrações e automação de processos.
+      </p>
+      <p class="mt-4 max-w-[540px] font-mono text-base leading-relaxed text-cream-fade" data-fade-up data-delay="3">
+        Conheça minha trajetória no LinkedIn e saiba com quem você vai conversar sobre o próximo passo da sua empresa.
+      </p>
+      {profile.linkedinUrl && (
+        <a
+          href={profile.linkedinUrl}
+          target="_blank"
+          rel="me noopener noreferrer"
+          class="mt-8 inline-flex min-h-12 items-center gap-3 border border-vermillion-border px-6 py-4 font-mono text-sm text-cream no-underline transition-colors hover:border-vermillion hover:bg-vermillion-fade focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-vermillion"
+          data-fade-up
+          data-delay="4"
+        >
+          <svg class="h-5 w-5 shrink-0 text-vermillion" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M20.45 2H3.55A1.55 1.55 0 0 0 2 3.55v16.9A1.55 1.55 0 0 0 3.55 22h16.9A1.55 1.55 0 0 0 22 20.45V3.55A1.55 1.55 0 0 0 20.45 2ZM7.93 18.75H4.98V9.2h2.95ZM6.45 7.9a1.71 1.71 0 1 1 0-3.42 1.71 1.71 0 0 1 0 3.42Zm12.3 10.85H15.8V14.1c0-1.11-.02-2.54-1.55-2.54-1.55 0-1.79 1.21-1.79 2.46v4.73H9.52V9.2h2.82v1.3h.04a3.09 3.09 0 0 1 2.78-1.53c2.97 0 3.52 1.95 3.52 4.49Z" />
+          </svg>
+          Ver meu LinkedIn <span aria-hidden="true">↗</span>
+          <span class="sr-only">(abre em nova aba)</span>
+        </a>
+      )}
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Respect the existing reduced-motion behavior. */
+  @media (prefers-reduced-motion: reduce) {
+    [data-fade-up] {
+      opacity: 1;
+      transform: none;
+      transition: none;
+    }
+  }
+</style>
+<noscript>
+  <style>
+    #sobre [data-fade-up] { opacity: 1; transform: none; }
+  </style>
+</noscript>
